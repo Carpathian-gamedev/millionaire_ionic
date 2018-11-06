@@ -1,4 +1,22 @@
 scene {
+	.help-desk {
+		height: 80px;
+		table {
+			margin: auto;
+			td {
+				padding: 15px;
+			}
+		}
+		.fifty-fifty div {
+			height: 25px;
+			font-size: 25px;
+			font-weight: bold;
+			line-height: 25px;
+		}
+		.fifty-fifty div:nth-child(1) {
+			border-bottom: 1px solid;
+		}
+	}
 	.image-wrapper {
 	    text-align: center;
 	    max-width: 100%;
