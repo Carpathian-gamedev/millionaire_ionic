@@ -15,12 +15,12 @@ export class HomePage {
 	ionViewWillEnter() {
 		this.http.get('assets/fake_json/story1.json')
 		  	.subscribe(response => {
-		        let data = JSON.parse(response["_body"]);
+				let data = JSON.parse(response["_body"]);
 
-		        this["data"] = data;
-		      }, xhr => {
-		        console.log(xhr);
-		      });
+				this["data"] = data;
+			}, xhr => {
+				console.log(xhr);
+			});
 	}
 
 	moveTo(page) {
