@@ -66,6 +66,9 @@ scene {
 		    &.incorrect {
 		    	background-color: red !important;
 		    }
+		    &.disabled {
+		    	opacity: 0.2;
+		    }
 		}
 	}
 }

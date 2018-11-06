@@ -55,6 +55,10 @@ export class ScenePage {
 	chooseOption(option) {
 		let correctOption;
 		
+		if (option.disabled) {
+			return;
+		}
+
 		option.clicked = true;
 
 		setTimeout(() => {
@@ -77,6 +81,24 @@ export class ScenePage {
 		setTimeout(() => {
 			this.callModal(option);
 		}, this.callModalTime)
+	}
+
+	fiftyFifty() {
+		var indexes = [],
+			randIndex;
+
+		while (indexes.length < 2) {
+			randIndex = (Math.random() * 4) - 0.1;
+			randIndex = randIndex > 0 ? Math.floor(randIndex) : 0;
+
+			if (!this["options"][randIndex].correct && indexes.indexOf(randIndex) < 0) {
+				indexes.push(randIndex);
+			}
+		}
+
+		for (var i = 0; i < indexes.length; i++) {
+			this.options[indexes[i]].disabled = true;
+		}
 	}
 
 	callModal(option) {
