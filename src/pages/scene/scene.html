@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Питання на {{level.price}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="image-wrapper" *ngIf="question && question.img" style="background-image: url('assets/imgs/story-images/story1/1.jpg')"></div>
+  <br>
+  <div class="question-wrapper" *ngIf="question && question.q"><div>{{question.q}}</div></div>
+  <ion-footer>
+    <div *ngFor="let option of options">
+      <button class="option button-large button-full" [ngClass]="{'clicked': option.clicked, 'correct': option.selected && option.correct, 'incorrect': option.selected && !option.correct}" (click)="chooseOption(option)">{{option.txt}}</button>
+    </div>
+	</ion-footer>
+</ion-content>
