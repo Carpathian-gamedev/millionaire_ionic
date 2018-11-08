@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ScenePage } from '../pages/scene/scene';
 import { SceneModal } from '../pages/scene-modal/scene-modal';
+import { SharedService } from './shared-service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SceneModal } from '../pages/scene-modal/scene-modal';
   ],
   providers: [
     StatusBar,
+    SharedService,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

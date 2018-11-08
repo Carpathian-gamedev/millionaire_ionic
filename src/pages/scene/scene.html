@@ -21,7 +21,7 @@
           </div>
         </td>
         <td>
-          <div class="cell-wrapper" (click)="fiftyFifty()">
+          <div class="cell-wrapper" [ngClass]="{'disabled': states.fiftyFifty}" (click)="fiftyFifty()">
             <div class="fifty-fifty" style="float: left; height: 50px; width: 50px; text-align: center; ">
               <div>50</div>
               <div>50</div>

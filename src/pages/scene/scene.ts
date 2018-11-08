@@ -3,6 +3,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { SceneModal } from '../scene-modal/scene-modal';
 import { HomePage } from '../home/home';
+import { SharedService } from '../../app/shared-service';
 
 @Component({
 	selector: 'scene',
@@ -15,13 +16,14 @@ export class ScenePage {
 	public blinks = 5;
 	public callModalTime = this.optionSelectionTimeout + this.blinks * this.animationTimeout + 1100;
 
-	constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController) {
+	constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public sharedService: SharedService) {
 		if (this.navParams.data.lastPage !== 'HomePage') {
 			this.navCtrl.remove(this.navCtrl.last().index);
 		}
 
 		this["levelsCounter"] = 0;
 		this["level"] = {};
+		this["states"] = this.sharedService.getStates();
 
 		this.setSceneData(this.navParams.data.sceneInfo);
 	}
@@ -87,6 +89,13 @@ export class ScenePage {
 		var indexes = [],
 			randIndex;
 
+		if (this.sharedService.getState('fiftyFifty')) {
+			return;
+		}
+
+		this.sharedService.setState('fiftyFifty', true);
+		this.states['fiftyFifty'] = true;
+
 		while (indexes.length < 2) {
 			randIndex = (Math.random() * 4) - 0.1;
 			randIndex = randIndex > 0 ? Math.floor(randIndex) : 0;
@@ -117,6 +126,7 @@ export class ScenePage {
 					.subscribe(response => {
 							let data = JSON.parse(response["_body"]);
 
+							this.sharedService.resetStates();
 							this.navCtrl.push(ScenePage, {sceneInfo: data}, {animate: false});
 						}, xhr => {
 							console.log(xhr);

@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AboutUsPage } from '../about-us/about-us';
 import { ScenePage } from '../scene/scene';
 import { Http } from '@angular/http';
+import { SharedService } from '../../app/shared-service';
 
 @Component({
 	selector: 'home',
@@ -10,7 +11,7 @@ import { Http } from '@angular/http';
 })
 
 export class HomePage {
-	constructor(public navCtrl: NavController, public http: Http) {}
+	constructor(public navCtrl: NavController, public http: Http, public sharedService: SharedService) {}
 
 	ionViewWillEnter() {
 		this.http.get('assets/fake_json/story1.json')
@@ -27,6 +28,7 @@ export class HomePage {
 		if (page === 'aboutUs') {
 			this.navCtrl.push(AboutUsPage);
 		} else if (page === 'scene') {
+			this.sharedService.resetStates();
 			this.navCtrl.push(ScenePage, {sceneInfo: this["data"], lastPage: 'HomePage'}, {animate: false});
 		}
 	}
