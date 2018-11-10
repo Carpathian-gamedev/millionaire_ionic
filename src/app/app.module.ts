@@ -9,13 +9,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ScenePage } from '../pages/scene/scene';
-import { SceneModal } from '../pages/scene-modal/scene-modal';
+import { SceneModal } from '../pages/modals/scene-modal/scene-modal';
+import { FriendsHelpModal } from '../pages/modals/friends-help-modal/friends-help-modal';
+import { PeoplesHelpModal } from '../pages/modals/peoples-help-modal/peoples-help-modal';
 import { SharedService } from './shared-service';
 
 @NgModule({
   declarations: [
     MyApp,
     SceneModal,
+    FriendsHelpModal,
+    PeoplesHelpModal,
     ScenePage,
     HomePage,
     AboutUsPage
@@ -29,6 +33,8 @@ import { SharedService } from './shared-service';
   entryComponents: [
     MyApp,
     SceneModal,
+    FriendsHelpModal,
+    PeoplesHelpModal,
     HomePage,
     AboutUsPage,
     ScenePage

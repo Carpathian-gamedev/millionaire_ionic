@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { SceneModal } from '../scene-modal/scene-modal';
 import { HomePage } from '../home/home';
+import { SceneModal } from '../modals/scene-modal/scene-modal';
+import { FriendsHelpModal } from '../modals/friends-help-modal/friends-help-modal';
+import { PeoplesHelpModal } from '../modals/peoples-help-modal/peoples-help-modal';
 import { SharedService } from '../../app/shared-service';
 
 @Component({
@@ -81,7 +83,7 @@ export class ScenePage {
 		}, this.optionSelectionTimeout);
 
 		setTimeout(() => {
-			this.callModal(option);
+			this.callSelectionModal(option);
 		}, this.callModalTime)
 	}
 
@@ -94,7 +96,7 @@ export class ScenePage {
 		}
 
 		this.sharedService.setState('fiftyFifty', true);
-		this.states['fiftyFifty'] = true;
+		this["states"]['fiftyFifty'] = true;
 
 		while (indexes.length < 2) {
 			randIndex = (Math.random() * 4) - 0.1;
@@ -106,11 +108,45 @@ export class ScenePage {
 		}
 
 		for (var i = 0; i < indexes.length; i++) {
-			this.options[indexes[i]].disabled = true;
+			this["options"][indexes[i]].disabled = true;
 		}
 	}
 
-	callModal(option) {
+	friendsHelp() {
+		if (this.sharedService.getState('friendsHelp')) {
+			return;
+		}
+
+		this.sharedService.setState('friendsHelp', true);
+		this["states"]['friendsHelp'] = true;
+
+		this.callFriendsHelpModal();
+	}
+
+	peoplesHelp() {
+		if (this.sharedService.getState('peoplesHelp')) {
+			return;
+		}
+
+		this.sharedService.setState('peoplesHelp', true);
+		this["states"]['peoplesHelp'] = true;
+
+		this.callPeoplesHelpModal();
+	}
+
+	callFriendsHelpModal() {
+		let friendsHelpModal = this.modalCtrl.create(FriendsHelpModal, {level: this.level || {}, options: this["options"]});
+		
+		friendsHelpModal.present();
+	}
+
+	callPeoplesHelpModal() {
+		let peoplesHelpModal = this.modalCtrl.create(PeoplesHelpModal, {level: this.level || {}, options: this["options"]});
+		
+		peoplesHelpModal.present();
+	}
+
+	callSelectionModal(option) {
 		let profileModal = this.modalCtrl.create(SceneModal, {level: this.level || {}, correct: option.correct});
 
 		profileModal.present();

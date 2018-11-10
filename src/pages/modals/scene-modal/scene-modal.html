@@ -1,0 +1,22 @@
+<div class="modal-body">
+	<div class="modal-header">
+		<span *ngIf='correct'>Правильна відповідь</span>
+		<span *ngIf='!correct'>Неправильна відповідь</span>
+	</div>
+	<div class="modal-content">
+		<div class="title">Ваш виграш</div>
+		<div class="points">
+			<span *ngIf='correct'>{{prize}}</span>
+			<span *ngIf='!correct'>0</span>
+		</div>
+		<div class="points-description">очок</div>
+	</div>
+	<div class="modal-actions">
+		<button class="take-prize" (click)="dismiss('takePrize')">
+			<span *ngIf='correct'>Забрати очки</span>
+			<span *ngIf='!correct'>На головну</span>
+		</button>
+		<button *ngIf='correct' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
+		<button *ngIf='!correct' class="new-game" (click)="dismiss('newGame')">Нова гра</button>
+	</div>
+</div>
