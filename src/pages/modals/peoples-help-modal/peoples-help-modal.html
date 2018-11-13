@@ -5,7 +5,7 @@
 	<div class="modal-content">
 		<div class="option" [ngClass]='{"disabled": option.disabled}' *ngFor="let option of options; let i = index">
 			<div class="letter">{{i}}</div>
-			<div style="width: calc(100% - 35px); height: 100%; float: left;">
+			<div class="percentage-wrapper">
 				<div class="percentage" [ngStyle]="{'width': setStyle(option)}"></div>
 			</div>
 		</div>

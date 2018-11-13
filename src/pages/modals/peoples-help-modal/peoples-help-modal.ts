@@ -18,7 +18,7 @@ export class PeoplesHelpModal {
 			sum = 0;
 
 		this["validOptions"] = 0;
-		this.options.forEach((option) => {
+		this["options"].forEach((option) => {
 			if (!option.disabled) {
 				let num = Math.ceil(Math.random() * 25);
 
@@ -29,12 +29,11 @@ export class PeoplesHelpModal {
 			}
 		});
 
-		this.chancesArray = arr.map((num) => {
-			return Math.floor((num/sum) * 100);
+		this["chancesArray"] = arr.map((num) => {
+			return Math.floor((num/sum) * 100) + Math.random() + Math.random() - Math.random();
 		});
 
-		this["biggestNumber"] = Math.max(...this.chancesArray);
-
+		this["biggestNumber"] = Math.max(...this["chancesArray"]);
 		this["options"].forEach((option) => {
 			if (!option.disabled) {
 				this.assignChance(option);
@@ -43,7 +42,7 @@ export class PeoplesHelpModal {
 	}
 
 	assignChance(option) {
-		var biggestNumIndex = this.chancesArray.indexOf(this.biggestNumber),
+		var biggestNumIndex = this["chancesArray"].indexOf(this.biggestNumber),
 			rand = 0,
 			lookForChance = true;
 

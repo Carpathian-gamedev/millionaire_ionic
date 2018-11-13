@@ -27,6 +27,11 @@ peoples-help-modal {
 			    &.disabled {
 			    	opacity: 0.3;
 			    }
+			    .percentage-wrapper {
+			    	width: calc(100% - 35px);
+			    	height: 100%;
+			    	float: left;
+			    }
 			    .letter {
 			    	float: left;
 			    	width: 20px;
