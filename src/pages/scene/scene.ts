@@ -141,7 +141,7 @@ export class ScenePage {
 	}
 
 	callPeoplesHelpModal() {
-		let peoplesHelpModal = this.modalCtrl.create(PeoplesHelpModal, {level: this.level || {}, options: this["options"]});
+		let peoplesHelpModal = this.modalCtrl.create(PeoplesHelpModal, {level: this.level || {}, question: this.question, options: this["options"]});
 		
 		peoplesHelpModal.present();
 	}

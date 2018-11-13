@@ -3,7 +3,10 @@
 		Допомога чиляді
 	</div>
 	<div class="modal-content">
-		тут будуть графіки голосування чиляді
+		<div class="option" *ngFor="let option of options; let i = index">
+			<div class="letter">{{i}}</div>
+			<div class="percentage"></div>
+		</div>
 	</div>
 	<div class="modal-actions">
 		<button class="go-forward" (click)="dismiss('goForward')">Продовжити</button>

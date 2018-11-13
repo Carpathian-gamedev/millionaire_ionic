@@ -19,6 +19,22 @@ peoples-help-modal {
 				height: 30px;
 				line-height: 30px;
 			}
+			.option {
+				text-align: left;
+			    height: 30px;
+			    line-height: 30px;
+			    margin-bottom: 10px;
+			    .letter {
+			    	float: left;
+			    	width: 20px;
+			    }
+			    .percentage {
+			    	float: left;
+			    	height: 100%;
+			    	width: 50%;
+			    	background-color: grey;
+			    }
+			}
 		}
 		.modal-actions {
 			display: table;
