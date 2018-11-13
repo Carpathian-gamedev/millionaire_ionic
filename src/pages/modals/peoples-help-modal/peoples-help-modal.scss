@@ -24,6 +24,9 @@ peoples-help-modal {
 			    height: 30px;
 			    line-height: 30px;
 			    margin-bottom: 10px;
+			    &.disabled {
+			    	opacity: 0.3;
+			    }
 			    .letter {
 			    	float: left;
 			    	width: 20px;
@@ -31,7 +34,6 @@ peoples-help-modal {
 			    .percentage {
 			    	float: left;
 			    	height: 100%;
-			    	width: 50%;
 			    	background-color: grey;
 			    }
 			}

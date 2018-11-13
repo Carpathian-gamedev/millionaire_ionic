@@ -3,9 +3,11 @@
 		Допомога чиляді
 	</div>
 	<div class="modal-content">
-		<div class="option" *ngFor="let option of options; let i = index">
+		<div class="option" [ngClass]='{"disabled": option.disabled}' *ngFor="let option of options; let i = index">
 			<div class="letter">{{i}}</div>
-			<div class="percentage"></div>
+			<div style="width: calc(100% - 35px); height: 100%; float: left;">
+				<div class="percentage" [ngStyle]="{'width': setStyle(option)}"></div>
+			</div>
 		</div>
 	</div>
 	<div class="modal-actions">
