@@ -3,7 +3,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { HomePage } from '../home/home';
 import { SceneModal } from '../modals/scene-modal/scene-modal';
-import { FriendsHelpModal } from '../modals/friends-help-modal/friends-help-modal';
+import { ChangeQuestionModal } from '../modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../modals/peoples-help-modal/peoples-help-modal';
 import { SharedService } from '../../app/shared-service';
 
@@ -120,7 +120,7 @@ export class ScenePage {
 		this.sharedService.setState('friendsHelp', true);
 		this["states"]['friendsHelp'] = true;
 
-		this.callFriendsHelpModal();
+		this.callChangeQuestionModal();
 	}
 
 	peoplesHelp() {
@@ -134,14 +134,14 @@ export class ScenePage {
 		this.callPeoplesHelpModal();
 	}
 
-	callFriendsHelpModal() {
-		let friendsHelpModal = this.modalCtrl.create(FriendsHelpModal, {level: this.level || {}, options: this["options"]});
+	callChangeQuestionModal() {
+		let changeQuestionModal = this.modalCtrl.create(ChangeQuestionModal, {level: this.level || {}, options: this["options"]});
 		
-		friendsHelpModal.present();
+		changeQuestionModal.present();
 	}
 
 	callPeoplesHelpModal() {
-		let peoplesHelpModal = this.modalCtrl.create(PeoplesHelpModal, {level: this.level || {}, question: this.question, options: this["options"]});
+		let peoplesHelpModal = this.modalCtrl.create(PeoplesHelpModal, {level: this.level || {}, question: this["question"], options: this["options"]});
 		
 		peoplesHelpModal.present();
 	}

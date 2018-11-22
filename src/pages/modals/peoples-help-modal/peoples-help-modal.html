@@ -6,7 +6,7 @@
 		<div class="option" [ngClass]='{"disabled": option.disabled}' *ngFor="let option of options; let i = index">
 			<div class="letter">{{i}}</div>
 			<div class="percentage-wrapper">
-				<div class="percentage" [ngStyle]="{'width': setStyle(option)}"></div>
+				<div class="percentage" [ngStyle]="{'width': setStyle(option)}"></div> {{option.chance}} %
 			</div>
 		</div>
 	</div>

@@ -10,7 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ScenePage } from '../pages/scene/scene';
 import { SceneModal } from '../pages/modals/scene-modal/scene-modal';
-import { FriendsHelpModal } from '../pages/modals/friends-help-modal/friends-help-modal';
+import { ChangeQuestionModal } from '../pages/modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../pages/modals/peoples-help-modal/peoples-help-modal';
 import { SharedService } from './shared-service';
 
@@ -18,7 +18,7 @@ import { SharedService } from './shared-service';
   declarations: [
     MyApp,
     SceneModal,
-    FriendsHelpModal,
+    ChangeQuestionModal,
     PeoplesHelpModal,
     ScenePage,
     HomePage,
@@ -33,7 +33,7 @@ import { SharedService } from './shared-service';
   entryComponents: [
     MyApp,
     SceneModal,
-    FriendsHelpModal,
+    ChangeQuestionModal,
     PeoplesHelpModal,
     HomePage,
     AboutUsPage,

@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
-	selector: 'friends-help-modal',
-	templateUrl: 'friends-help-modal.html'
+	selector: 'change-question-modal',
+	templateUrl: 'change-question-modal.html'
 })
-export class FriendsHelpModal {
+export class ChangeQuestionModal {
 	constructor(public viewCtrl: ViewController, public params: NavParams) {
 		
 	}

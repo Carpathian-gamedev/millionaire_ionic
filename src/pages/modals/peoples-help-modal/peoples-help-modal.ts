@@ -30,7 +30,7 @@ export class PeoplesHelpModal {
 		});
 
 		this["chancesArray"] = arr.map((num) => {
-			return Math.floor((num/sum) * 100) + Math.random() + Math.random() - Math.random();
+			return Math.floor((num/sum) * 100) + Math.random() * 0.1 + Math.random() * 0.1 - Math.random() * 0.1;
 		});
 
 		this["biggestNumber"] = Math.max(...this["chancesArray"]);
@@ -39,29 +39,53 @@ export class PeoplesHelpModal {
 				this.assignChance(option);
 			}
 		});
+
+		this.normalizeChances();
 	}
 
 	assignChance(option) {
-		var biggestNumIndex = this["chancesArray"].indexOf(this.biggestNumber),
+		var biggestNumIndex = this["chancesArray"].indexOf(this["biggestNumber"]),
 			rand = 0,
 			lookForChance = true;
 
 		if (option.correct) {
-			option.chance = this.biggestNumber;
+			option.chance = this["biggestNumber"];
 
-			this.chancesArray.splice(biggestNumIndex, 1);
+			this["chancesArray"].splice(biggestNumIndex, 1);
 		} else {
 			while (lookForChance) {
-				rand = Math.floor(Math.random() * this.chancesArray.length);
+				rand = Math.floor(Math.random() * this["chancesArray"].length);
 
 				if (rand !== biggestNumIndex) {
 					lookForChance = false;
-					option.chance = this.chancesArray[rand];
+					option.chance = this["chancesArray"][rand];
 
-					this.chancesArray.splice(rand, 1);
+					this["chancesArray"].splice(rand, 1);
 				}
 			}
 		}
+	}
+
+	normalizeChances() {
+		let normalizer = 0,
+			sum = 0;
+
+		this["options"].forEach(function (option) {
+			if (option.chance) {
+				option.chance = Math.floor(option.chance);
+				sum += option.chance;
+			}
+		});
+
+		normalizer = 100 - sum;
+		
+		this["options"].forEach(function (option) {
+			if (option.correct) {
+				option.chance += normalizer;
+			}
+		});
+
+		console.info(this["options"]);
 	}
 
 	setStyle(option) {
