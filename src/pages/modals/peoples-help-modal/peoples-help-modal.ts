@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { SharedService } from '../../../app/shared-service';
 
 @Component({
 	selector: 'peoples-help-modal',
 	templateUrl: 'peoples-help-modal.html'
 })
 export class PeoplesHelpModal {
-	constructor(public viewCtrl: ViewController, public params: NavParams) {
+	constructor(public viewCtrl: ViewController, public params: NavParams, public sharedService: SharedService) {
 		this["level"] = this.params.data.level,
 		this["options"] = this.params.data.options.slice();
+		this["letters"] = sharedService.getLetters();
 
 		this.setChances();		
 	}
@@ -89,7 +91,7 @@ export class PeoplesHelpModal {
 	}
 
 	setStyle(option) {
-		return 'calc(' + option.chance + '%)'
+		return 'calc(' + option.chance + '% - 5px)'
 	}
 
 	dismiss(action) {

@@ -26,6 +26,7 @@ export class ScenePage {
 		this["levelsCounter"] = 0;
 		this["level"] = {};
 		this["states"] = this.sharedService.getStates();
+		this["letters"] = sharedService.getLetters();
 
 		this.setSceneData(this.navParams.data.sceneInfo);
 	}

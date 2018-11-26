@@ -6,6 +6,7 @@ export class SharedService {
 
     constructor() {
         this["states"] = {};
+        this["letters"] = ['A', 'B', 'C', 'D'];
         this.resetStates();
     }
 
@@ -27,5 +28,9 @@ export class SharedService {
 
     setState(state, value) {
 
+    }
+
+    getLetters() {
+        return this["letters"];
     }
 }

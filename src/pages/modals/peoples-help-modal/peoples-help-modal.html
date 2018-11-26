@@ -4,9 +4,9 @@
 	</div>
 	<div class="modal-content">
 		<div class="option" [ngClass]='{"disabled": option.disabled}' *ngFor="let option of options; let i = index">
-			<div class="letter">{{i}}</div>
+			<div class="letter">{{letters[i]}}</div>
 			<div class="percentage-wrapper">
-				<div class="percentage" [ngStyle]="{'width': setStyle(option)}"></div> {{option.chance}} %
+				<div class="percentage" [ngStyle]="{'width': setStyle(option), 'min-width': '10px'}"></div> <span *ngIf="option.chance">{{option.chance}} %</span>
 			</div>
 		</div>
 	</div>
