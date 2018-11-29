@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { SharedService } from '../../../app/shared-service';
+import { SharedService } from '../../../helpers/scripts/shared-service';
 
 @Component({
 	selector: 'peoples-help-modal',

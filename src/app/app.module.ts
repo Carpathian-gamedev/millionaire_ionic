@@ -12,7 +12,7 @@ import { ScenePage } from '../pages/scene/scene';
 import { SceneModal } from '../pages/modals/scene-modal/scene-modal';
 import { ChangeQuestionModal } from '../pages/modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../pages/modals/peoples-help-modal/peoples-help-modal';
-import { SharedService } from './shared-service';
+import { SharedService } from '../helpers/scripts/shared-service';
 
 @NgModule({
   declarations: [

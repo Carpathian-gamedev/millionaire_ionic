@@ -1,6 +1,11 @@
+@import "../../helpers/styles/mixins.scss";
+
 home {
 	.menu-list {
 		text-align: center;
 		width: 100%;
+		button[round] {
+			@extend %custom-button;
+		}
 	}
 }

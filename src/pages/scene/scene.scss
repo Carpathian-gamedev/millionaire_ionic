@@ -1,3 +1,5 @@
+@import "../../helpers/styles/mixins.scss";
+
 scene {
 	.help-desk {
 		height: 80px;
@@ -6,11 +8,11 @@ scene {
 			td {
 				padding: 10px;
 				.cell-wrapper {
+					@extend %custom-button;
 					width: 100%;
 					height: 72px;
 					border: 1px solid black;
 					display: inline-block;
-					border-radius: 10px;
 					padding: 10px;
 					&.disabled {
 						opacity: 0.2;
@@ -51,8 +53,8 @@ scene {
 	ion-footer {
 		padding: 16px;
 		.option {
+			@extend %custom-button;
 		    margin-top: 10px;
-		    border-radius: 10px;
 		    contain: none;
 		    font-size: 18px;
 		    text-align: left;
@@ -72,6 +74,16 @@ scene {
 		    &.disabled {
 		    	opacity: 0.2;
 		    }
+		}
+		.check-stage-button {
+			position: absolute;
+			border-top-left-radius: $btnCommonBorderRadius;
+			border-bottom-left-radius: $btnCommonBorderRadius;
+			height: 72px;
+			width: 72px;
+			background-color: red;
+			right: 0;
+			top: -70px;
 		}
 	}
 }

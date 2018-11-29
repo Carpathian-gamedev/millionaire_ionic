@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AboutUsPage } from '../about-us/about-us';
 import { ScenePage } from '../scene/scene';
 import { Http } from '@angular/http';
-import { SharedService } from '../../app/shared-service';
+import { SharedService } from '../../helpers/scripts/shared-service';
 
 @Component({
 	selector: 'home',

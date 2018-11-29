@@ -5,7 +5,7 @@ import { HomePage } from '../home/home';
 import { SceneModal } from '../modals/scene-modal/scene-modal';
 import { ChangeQuestionModal } from '../modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../modals/peoples-help-modal/peoples-help-modal';
-import { SharedService } from '../../app/shared-service';
+import { SharedService } from '../../helpers/scripts/shared-service';
 
 @Component({
 	selector: 'scene',
