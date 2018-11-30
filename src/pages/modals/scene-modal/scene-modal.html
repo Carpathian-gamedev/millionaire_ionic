@@ -9,14 +9,15 @@
 			<span *ngIf='correct'>{{prize}}</span>
 			<span *ngIf='!correct'>0</span>
 		</div>
-		<div class="points-description">очок</div>
+		<div class="points-description" [hidden]="level.price === 1000000 && correct">очок</div>
 	</div>
 	<div class="modal-actions">
-		<button class="take-prize" (click)="dismiss('takePrize')">
+		<button class="take-prize" (click)="dismiss('takePrize')" [hidden]="level.price === 1000000 && correct">
 			<span *ngIf='correct'>Забрати очки</span>
 			<span *ngIf='!correct'>На головну</span>
 		</button>
-		<button *ngIf='correct' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
+		<button *ngIf='correct && level.price !== 1000000' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
+		<button *ngIf='correct && level.price === 1000000' class="go-forward" (click)="dismiss('goToMillion')">Похваліт ня</button>
 		<button *ngIf='!correct' class="new-game" (click)="dismiss('newGame')">Нова гра</button>
 	</div>
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { HomePage } from '../home/home';
+import { MillionPage } from '../million-page/million-page';
 import { SceneModal } from '../modals/scene-modal/scene-modal';
 import { ChangeQuestionModal } from '../modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../modals/peoples-help-modal/peoples-help-modal';
@@ -159,6 +160,8 @@ export class ScenePage {
 				this.setSceneData(this.navParams.data.sceneInfo);
 			} else if (data.action === 'takePrize') {
 				this.navCtrl.push(HomePage, {}, {animate: false});
+			} else if (data.action === 'goToMillion') {
+				this.navCtrl.push(MillionPage, {}, {animate: false});
 			} else if (data.action === 'newGame') {
 				this.http.get('assets/fake_json/story1.json')
 					.subscribe(response => {

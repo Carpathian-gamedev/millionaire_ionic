@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MillionPage } from '../pages/million-page/million-page';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ScenePage } from '../pages/scene/scene';
 import { SceneModal } from '../pages/modals/scene-modal/scene-modal';
@@ -24,6 +25,7 @@ import { SharedService } from '../helpers/scripts/shared-service';
     InfoModal,
     ScenePage,
     HomePage,
+    MillionPage,
     AboutUsPage
   ],
   imports: [
@@ -39,6 +41,7 @@ import { SharedService } from '../helpers/scripts/shared-service';
     PeoplesHelpModal,
     InfoModal,
     HomePage,
+    MillionPage,
     AboutUsPage,
     ScenePage
   ],
