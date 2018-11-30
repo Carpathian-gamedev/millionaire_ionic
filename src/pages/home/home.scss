@@ -5,7 +5,7 @@ home {
 		text-align: center;
 		width: 100%;
 		button[round] {
-			@extend %custom-button;
+			@extend %custom-block-view;
 		}
 	}
 }

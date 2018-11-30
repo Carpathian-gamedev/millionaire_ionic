@@ -35,8 +35,8 @@
   <br>
   <div class="question-wrapper" *ngIf="question && question.q"><div>{{question.q}}</div></div>
   <ion-footer>
-    <div class="check-stage-button">
-      123
+    <div class="check-stage-button" (click)="callInfoModal()">
+        <ion-icon name="logo-usd"></ion-icon>
     </div>
     <div *ngFor="let option of options; let i = index">
       <button class="option button-large button-full" [ngClass]="{'clicked': option.clicked, 'correct': option.selected && option.correct, 'incorrect': option.selected && !option.correct, 'disabled': option.disabled}" (click)="chooseOption(option)">{{letters[i]}}. {{option.txt}}</button>

@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { SceneModal } from '../modals/scene-modal/scene-modal';
 import { ChangeQuestionModal } from '../modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../modals/peoples-help-modal/peoples-help-modal';
+import { InfoModal } from '../modals/info-modal/info-modal';
 import { SharedService } from '../../helpers/scripts/shared-service';
 
 @Component({
@@ -170,6 +171,12 @@ export class ScenePage {
 						});
 			}
 		});
+	}
+
+	callInfoModal() {
+		let infoModal = this.modalCtrl.create(InfoModal, {levels: this.navParams.data.sceneInfo["levels"], level: this["level"]});
+
+		infoModal.present();
 	}
 
 	startAnimation(option, counter) {

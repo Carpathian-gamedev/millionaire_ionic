@@ -12,6 +12,7 @@ import { ScenePage } from '../pages/scene/scene';
 import { SceneModal } from '../pages/modals/scene-modal/scene-modal';
 import { ChangeQuestionModal } from '../pages/modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../pages/modals/peoples-help-modal/peoples-help-modal';
+import { InfoModal } from '../pages/modals/info-modal/info-modal';
 import { SharedService } from '../helpers/scripts/shared-service';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SharedService } from '../helpers/scripts/shared-service';
     SceneModal,
     ChangeQuestionModal,
     PeoplesHelpModal,
+    InfoModal,
     ScenePage,
     HomePage,
     AboutUsPage
@@ -35,6 +37,7 @@ import { SharedService } from '../helpers/scripts/shared-service';
     SceneModal,
     ChangeQuestionModal,
     PeoplesHelpModal,
+    InfoModal,
     HomePage,
     AboutUsPage,
     ScenePage
