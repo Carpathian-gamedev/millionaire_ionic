@@ -8,7 +8,8 @@ import { SharedService } from '../../../helpers/scripts/shared-service';
 })
 export class InfoModal {
 	constructor(public viewCtrl: ViewController, public params: NavParams, public sharedService: SharedService) {
-		this["levels"] = this.params.data.levels;
+		this["levels"] = this.params.data.levels.slice();
+		this["levels"].reverse();
 		this["level"] = this.params.data.level;
 	}
 

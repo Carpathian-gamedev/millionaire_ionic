@@ -37,6 +37,7 @@
   <ion-footer>
     <div class="check-stage-button" (click)="callInfoModal()">
         <ion-icon name="logo-usd"></ion-icon>
+        <div>{{level.price | numberShortener}}</div>
     </div>
     <div *ngFor="let option of options; let i = index">
       <button class="option button-large button-full" [ngClass]="{'clicked': option.clicked, 'correct': option.selected && option.correct, 'incorrect': option.selected && !option.correct, 'disabled': option.disabled}" (click)="chooseOption(option)">{{letters[i]}}. {{option.txt}}</button>

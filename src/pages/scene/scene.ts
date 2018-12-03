@@ -13,7 +13,7 @@ import { SharedService } from '../../helpers/scripts/shared-service';
 	selector: 'scene',
 	templateUrl: 'scene.html'
 })
-export class ScenePage {
+export class ScenePage implements PipeTransform {
 	public level;
 	public animationTimeout = 300;
 	public optionSelectionTimeout = 1000;

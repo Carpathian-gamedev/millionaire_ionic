@@ -8,7 +8,6 @@ info-modal {
 		padding: 10px;
 		display: table;
 		width: 100%;
-		height: 100%;
 		[name="md-close"] {
 			position: absolute;
 			top: 10px;
@@ -20,15 +19,15 @@ info-modal {
 			@extend %custom-block-view;
 			width: 100%;
 		    text-align: center;
-		    height: 30px;
-		    line-height: 30px;
+		    height: 26px;
+		    line-height: 26px;
 		    border: 1px solid black;
 		    &.active {
 		    	background: #aeecae;
 		    }
 		}
 		.vertical-line-imitator {
-			height: 15px;
+			height: 8px;
 			width: 50%;
 			border-right: 1px solid black;
 		}

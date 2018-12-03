@@ -81,12 +81,13 @@ scene {
 		    border-bottom-left-radius: 10px;
 		    height: 72px;
 		    width: 72px;
-		    line-height: 72px;
+		    padding-top: 10px;
+		    /* line-height: 32px; */
 		    /* background-color: red; */
 		    right: 0;
 		    top: -100px;
 		    text-align: center;
-		    font-size: 30px;
+		    font-size: 20px;
 		    border: 1px solid black;
 		    border-right: none;
 		}
