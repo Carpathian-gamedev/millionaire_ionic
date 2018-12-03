@@ -12,7 +12,9 @@
       <tr>
         <td>
           <div class="cell-wrapper" [ngClass]="{'disabled': states.friendsHelp}" (click)="friendsHelp()">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 50px;"><path d="M426.666 330.667a250.385 250.385 0 0 1-75.729-11.729c-7.469-2.136-16-1.073-21.332 5.333l-46.939 46.928c-60.802-30.928-109.864-80-140.802-140.803l46.939-46.927c5.332-5.333 7.462-13.864 5.332-21.333-8.537-24.531-12.802-50.136-12.802-76.803C181.333 73.604 171.734 64 160 64H85.333C73.599 64 64 73.604 64 85.333 64 285.864 226.136 448 426.666 448c11.73 0 21.334-9.604 21.334-21.333V352c0-11.729-9.604-21.333-21.334-21.333z"/></svg>
+            <div class="refresh">
+              <ion-icon name="md-refresh"></ion-icon>
+            </div>
           </div>
         </td>
         <td>
@@ -33,11 +35,14 @@
   </div>
   <div class="image-wrapper" *ngIf="question && question.img" style="background-image: url('assets/imgs/story-images/story1/1.jpg')"></div>
   <br>
+  <div class="question-title-wrapper">
+    <div class="question-title">Питання на {{level.price | numberFormatter}}</div>
+  </div>
   <div class="question-wrapper" *ngIf="question && question.q"><div>{{question.q}}</div></div>
   <ion-footer>
     <div class="check-stage-button" (click)="callInfoModal()">
         <ion-icon name="logo-usd"></ion-icon>
-        <div>{{level.price | numberShortener}}</div>
+        <!-- <div>{{level.price | numberShortener}}</div> -->
     </div>
     <div *ngFor="let option of options; let i = index">
       <button class="option button-large button-full" [ngClass]="{'clicked': option.clicked, 'correct': option.selected && option.correct, 'incorrect': option.selected && !option.correct, 'disabled': option.disabled}" (click)="chooseOption(option)">{{letters[i]}}. {{option.txt}}</button>

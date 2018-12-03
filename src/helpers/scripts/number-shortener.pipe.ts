@@ -1,16 +1,24 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'numberShortener'})
-export class NumberShortenerPipe implements PipeTransform {
+@Pipe({name: 'numberFormatter'})
+export class NumberFormatterPipe implements PipeTransform {
 	transform(price: number): string {
-		if (price/1000 < 1) {
-			return price + '';
-		} else if (price/1000 >= 1 && price/1000 < 1000) {
-			return price/1000 + 'K';
-		} else if (price/1000 === 1000) {
-			return '1M';
+		price += '';
+
+		if (price < 1000) {
+			return price;
 		}
 
-		return price;
+		var splittedNum = price.split(''),
+            reverted = splittedNum.reverse(),
+            pieces = [];
+
+            reverted.forEach(function (item, index) {
+                if ((index + 1) % 3 === 0) {
+                    reverted[index] = ' ' + item;
+                }
+            });
+
+		return reverted.reverse().join('');
 	}
 }

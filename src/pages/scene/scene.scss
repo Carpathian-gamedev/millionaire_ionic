@@ -20,6 +20,14 @@ scene {
 				}
 			}
 		}
+		.refresh {
+			width: 50px;
+		    height: 50px;
+		    /* line-height: 50px; */
+		    padding-top: 3px;
+		    font-size: 38px;
+		    text-align: center;
+		}
 		.fifty-fifty div {
 			height: 25px;
 			font-size: 25px;
@@ -38,17 +46,29 @@ scene {
 	    background-size: cover;
 	    background-repeat: no-repeat;
 	}
+	.question-title-wrapper {
+		border-top: 1px solid lightgrey;
+	    margin-left: calc(50% - 123px);
+	    margin-right: calc(50% - 123px);
+		.question-title {
+			text-align: center;
+		    background: $btnCommonOrange;
+		    margin: auto;
+		    display: table;
+		    margin-top: -1px;
+		    border-bottom-left-radius: 6px;
+		    border-bottom-right-radius: 6px;
+		    padding: 4px 15px;
+		}
+	}
 	.question-wrapper {
 		height: 200px;
 		display: table;
+		padding-top: 50px;
 		width: 100%;
 		text-align: center;
 		position: relative;
 		font-size: 20px;
-		div {
-			display: table-cell;
-    		vertical-align: middle;
-		}
 	}
 	ion-footer {
 		padding: 16px;
@@ -81,13 +101,13 @@ scene {
 		    border-bottom-left-radius: 10px;
 		    height: 72px;
 		    width: 72px;
-		    padding-top: 10px;
+		    line-height: 72px;
 		    /* line-height: 32px; */
 		    /* background-color: red; */
 		    right: 0;
-		    top: -100px;
+		    top: -70px;
 		    text-align: center;
-		    font-size: 20px;
+		    font-size: 30px;
 		    border: 1px solid black;
 		    border-right: none;
 		}

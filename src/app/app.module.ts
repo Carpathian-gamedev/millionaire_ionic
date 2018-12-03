@@ -15,7 +15,7 @@ import { ChangeQuestionModal } from '../pages/modals/change-question-modal/chang
 import { PeoplesHelpModal } from '../pages/modals/peoples-help-modal/peoples-help-modal';
 import { InfoModal } from '../pages/modals/info-modal/info-modal';
 import { SharedService } from '../helpers/scripts/shared-service';
-import { NumberShortenerPipe } from '../helpers/scripts/number-shortener.pipe';
+import { NumberFormatterPipe } from '../helpers/scripts/number-shortener.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { NumberShortenerPipe } from '../helpers/scripts/number-shortener.pipe';
     HomePage,
     MillionPage,
     AboutUsPage,
-    NumberShortenerPipe
+    NumberFormatterPipe
   ],
   imports: [
     BrowserModule,

@@ -21,15 +21,16 @@ info-modal {
 		    text-align: center;
 		    height: 26px;
 		    line-height: 26px;
-		    border: 1px solid black;
+		    border: 1px solid #b0b0b0;
 		    &.active {
-		    	background: #aeecae;
+		    	background: $btnCommonOrange;
+		    	// border: $btnCommonOrange;
 		    }
 		}
 		.vertical-line-imitator {
 			height: 8px;
 			width: 50%;
-			border-right: 1px solid black;
+			border-right: 1px solid #b0b0b0;
 		}
 		.modal-actions {
 			

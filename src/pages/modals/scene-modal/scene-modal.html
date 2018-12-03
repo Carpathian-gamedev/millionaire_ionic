@@ -6,10 +6,10 @@
 	<div class="modal-content">
 		<div class="title">Ваш виграш</div>
 		<div class="points">
-			<span *ngIf='correct'>{{prize}}</span>
+			<span *ngIf='correct'>{{prize | numberFormatter}}</span>
 			<span *ngIf='!correct'>0</span>
 		</div>
-		<div class="points-description" [hidden]="level.price === 1000000 && correct">очок</div>
+		<!-- <div class="points-description" [hidden]="level.price === 1000000 && correct">очок</div> -->
 	</div>
 	<div class="modal-actions">
 		<button class="take-prize" (click)="dismiss('takePrize')" [hidden]="level.price === 1000000 && correct">

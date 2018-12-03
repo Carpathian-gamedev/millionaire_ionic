@@ -3,7 +3,7 @@
 	<div class="modal-content">
 		<div *ngFor="let l of levels; let i = index">
 			<div class="level-price" [ngClass]="{'active': l.price === level.price}">
-				{{l.price}}
+				{{l.price | numberFormatter}}
 			</div>
 			<div class="vertical-line-imitator" *ngIf="i + 1 < levels.length"></div>
 		</div>
