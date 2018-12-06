@@ -1,9 +1,11 @@
 my-records {
-	background: red;
 	.scroll-content {
 		overflow: scroll !important;
 		.my-records-message {
 			text-align: center;
+		}
+		.time {
+			width: 112px;
 		}
 	}
 }

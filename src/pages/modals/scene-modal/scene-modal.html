@@ -12,9 +12,11 @@
 		<!-- <div class="points-description" [hidden]="level.price === 1000000 && correct">очок</div> -->
 	</div>
 	<div class="modal-actions">
-		<button class="take-prize" (click)="dismiss('takePrize')" [hidden]="level.price === 1000000 && correct">
+		<button class="take-prize" (click)="dismiss('goHome')" *ngIf="!correct">
+			<span>На головну</span>
+		</button>
+		<button class="take-prize" (click)="dismiss('takePrize')" *ngIf="level.price !== 1000000 && correct">
 			<span *ngIf='correct'>Забрати очки</span>
-			<span *ngIf='!correct'>На головну</span>
 		</button>
 		<button *ngIf='correct && level.price !== 1000000' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
 		<button *ngIf='correct && level.price === 1000000' class="go-forward" (click)="dismiss('goToMillion')">Похваліт ня</button>

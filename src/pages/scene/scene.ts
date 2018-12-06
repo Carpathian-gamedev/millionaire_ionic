@@ -166,6 +166,8 @@ export class ScenePage {
 				this.setSceneData(this.navParams.data.sceneInfo);
 			} else if (data.action === 'takePrize') {
 				this.navCtrl.push(MyRecordsPage, {lastPage: 'ScenePage'}, {animate: false});
+			} else if (data.action === 'goHome') {
+				this.navCtrl.push(HomePage, {}, {animate: false});
 			} else if (data.action === 'goToMillion') {
 				this.navCtrl.push(MillionPage, {}, {animate: false});
 			} else if (data.action === 'newGame') {
