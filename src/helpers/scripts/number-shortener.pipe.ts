@@ -1,11 +1,11 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe } from '@angular/core';
 
 @Pipe({name: 'numberFormatter'})
-export class NumberFormatterPipe implements PipeTransform {
+export class NumberFormatterPipe {
 	transform(price: number): string {
 		let p = price + '';
 
-		if (p < 1000) {
+		if (price < 1000) {
 			return p;
 		}
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AboutUsPage } from '../about-us/about-us';
+import { MyRecordsPage } from '../my-records/my-records';
 import { ScenePage } from '../scene/scene';
 import { Http } from '@angular/http';
 import { SharedService } from '../../helpers/scripts/shared-service';
@@ -30,6 +31,8 @@ export class HomePage {
 		} else if (page === 'scene') {
 			this.sharedService.resetStates();
 			this.navCtrl.push(ScenePage, {sceneInfo: this["data"], lastPage: 'HomePage'}, {animate: false});
+		} else if (page === 'myRecords') {
+			this.navCtrl.push(MyRecordsPage);
 		}
 	}
 }

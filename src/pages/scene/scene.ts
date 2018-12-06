@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { MillionPage } from '../million-page/million-page';
+import { MyRecordsPage } from '../my-records/my-records';
 import { SceneModal } from '../modals/scene-modal/scene-modal';
 import { ChangeQuestionModal } from '../modals/change-question-modal/change-question-modal';
 import { PeoplesHelpModal } from '../modals/peoples-help-modal/peoples-help-modal';
@@ -13,14 +15,14 @@ import { SharedService } from '../../helpers/scripts/shared-service';
 	selector: 'scene',
 	templateUrl: 'scene.html'
 })
-export class ScenePage implements PipeTransform {
+export class ScenePage {
 	public level;
 	public animationTimeout = 300;
 	public optionSelectionTimeout = 1000;
 	public blinks = 5;
 	public callModalTime = this.optionSelectionTimeout + this.blinks * this.animationTimeout + 1100;
 
-	constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public sharedService: SharedService) {
+	constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public sharedService: SharedService, private storage: Storage) {
 		if (this.navParams.data.lastPage !== 'HomePage') {
 			this.navCtrl.remove(this.navCtrl.last().index);
 		}
@@ -73,6 +75,10 @@ export class ScenePage implements PipeTransform {
 
 			if (option.correct) {
 				correctOption = option;
+
+				if (this["level"].price === 1000000) {
+					this.writeVictory();
+				}
 			} else {
 				for (var i = 0; i < this["options"].length; i++) {
 					if (this["options"][i].correct) {
@@ -159,7 +165,7 @@ export class ScenePage implements PipeTransform {
 				this["levelsCounter"]++;
 				this.setSceneData(this.navParams.data.sceneInfo);
 			} else if (data.action === 'takePrize') {
-				this.navCtrl.push(HomePage, {}, {animate: false});
+				this.navCtrl.push(MyRecordsPage, {lastPage: 'ScenePage'}, {animate: false});
 			} else if (data.action === 'goToMillion') {
 				this.navCtrl.push(MillionPage, {}, {animate: false});
 			} else if (data.action === 'newGame') {
@@ -180,6 +186,16 @@ export class ScenePage implements PipeTransform {
 		let infoModal = this.modalCtrl.create(InfoModal, {levels: this.navParams.data.sceneInfo["levels"], level: this["level"]});
 
 		infoModal.present();
+	}
+
+	writeVictory () {
+		this.storage.get('records').then((val) => {
+			let records = val ? JSON.parse(val) : [];
+
+			records.unshift({date: new Date().getTime(), prize: 1000000});
+
+			this.storage.set('records', JSON.stringify(records));
+		});
 	}
 
 	startAnimation(option, counter) {

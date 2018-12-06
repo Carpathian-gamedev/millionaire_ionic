@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MillionPage } from '../pages/million-page/million-page';
 import { AboutUsPage } from '../pages/about-us/about-us';
+import { MyRecordsPage } from '../pages/my-records/my-records';
 import { ScenePage } from '../pages/scene/scene';
 import { SceneModal } from '../pages/modals/scene-modal/scene-modal';
 import { ChangeQuestionModal } from '../pages/modals/change-question-modal/change-question-modal';
@@ -29,6 +30,7 @@ import { NumberFormatterPipe } from '../helpers/scripts/number-shortener.pipe';
     HomePage,
     MillionPage,
     AboutUsPage,
+    MyRecordsPage,
     NumberFormatterPipe
   ],
   imports: [
@@ -47,6 +49,7 @@ import { NumberFormatterPipe } from '../helpers/scripts/number-shortener.pipe';
     HomePage,
     MillionPage,
     AboutUsPage,
+    MyRecordsPage,
     ScenePage
   ],
   providers: [

@@ -15,9 +15,16 @@ export class SceneModal {
 
 	dismiss(action) {
 		if (action === 'takePrize') {
-			console.info(JSON.stringify({oleg: 1}));
-		}
+			this.storage.get('records').then((val) => {
+				let records = val ? JSON.parse(val) : [];
 
-		this.viewCtrl.dismiss({action: action});
+				records.unshift({date: new Date().getTime(), prize: this["prize"]});
+
+				this.storage.set('records', JSON.stringify(records));
+				this.viewCtrl.dismiss({action: action});
+			});
+		} else {
+			this.viewCtrl.dismiss({action: action});
+		}
 	}
 }

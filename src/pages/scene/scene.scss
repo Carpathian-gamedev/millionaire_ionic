@@ -72,6 +72,9 @@ scene {
 	}
 	ion-footer {
 		padding: 16px;
+		&::before {
+			background: none;
+		};
 		.option {
 			@extend %custom-block-view;
 		    margin-top: 10px;
