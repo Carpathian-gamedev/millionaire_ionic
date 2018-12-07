@@ -1,6 +1,6 @@
 scene-modal {
 	background-color: rgba(143, 143, 143, 0.6);
-	padding: 20% 15px;
+	padding: 10% 15px;
 	.modal-body {
 		background-color: white;
 		height: 100%;
@@ -9,11 +9,11 @@ scene-modal {
 			height: 60px;
 			text-align: center;
 			font-weight: bold;
-			font-size: 25px;
+			font-size: 20px;
 			line-height: 60px; 
 		}
 		.modal-content {
-			height: calc(100% - 120px);
+			height: calc(100% - 170px);
 			line-height: calc(100% - 120px);
 			padding-top: 45px;
 			text-align: center;
@@ -28,20 +28,40 @@ scene-modal {
 				line-height: 100px;
 			}
 			.points-description {
-				/*margin-top: 50px;*/
+				color: #bb1205;
+				line-height: 20px;
+			}
+			&.correct {
+				height: calc(100% - 120px);
 			}
 		}
 		.modal-actions {
 			button {
 				width: calc(50% - 7px);
-				padding: 20px 0;
-				font-size: 20px;
+				padding: 0 10px;
+				height: 60px;
+				font-size: 17px;
 				&.take-prize {
 					float: left;
 				}
 				&.go-forward,
 				&.new-game {
 					float: right;
+				}
+				&.call-to-watch-video {
+					font-size: 12px;
+				}
+			}
+			.home-page-link {
+				height: 50px;
+				line-height: 64px;
+				text-align: center;
+				[name="arrow-round-back"] {
+					font-size: 20px;
+					vertical-align: middle;
+				}
+				.txt {
+					text-decoration: underline;
 				}
 			}
 		}

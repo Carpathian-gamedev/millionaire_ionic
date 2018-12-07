@@ -1,25 +1,33 @@
 <div class="modal-body">
 	<div class="modal-header">
-		<span *ngIf='correct'>Правильна відповідь</span>
-		<span *ngIf='!correct'>Неправильна відповідь</span>
+		<span *ngIf='correct'>Правильна&nbsp;відповідь</span>
+		<span *ngIf='!correct'>Неправильна&nbsp;відповідь</span>
 	</div>
-	<div class="modal-content">
+	<div class="modal-content" [ngClass]='{"correct": correct}'>
 		<div class="title">Ваш виграш</div>
 		<div class="points">
 			<span *ngIf='correct'>{{prize | numberFormatter}}</span>
 			<span *ngIf='!correct'>0</span>
 		</div>
-		<!-- <div class="points-description" [hidden]="level.price === 1000000 && correct">очок</div> -->
+		<div class="points-description" [hidden]="correct">
+			Ви відповіли неправильно, айбо можете
+			<b>Поникати відео і продовжити гру</b>
+			з цього місця де ви зараз
+		</div>
 	</div>
 	<div class="modal-actions">
-		<button class="take-prize" (click)="dismiss('goHome')" *ngIf="!correct">
-			<span>На головну</span>
-		</button>
 		<button class="take-prize" (click)="dismiss('takePrize')" *ngIf="level.price !== 1000000 && correct">
 			<span *ngIf='correct'>Забрати очки</span>
 		</button>
 		<button *ngIf='correct && level.price !== 1000000' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
 		<button *ngIf='correct && level.price === 1000000' class="go-forward" (click)="dismiss('goToMillion')">Похваліт ня</button>
+		<button *ngIf='!correct' class="call-to-watch-video">Поникати відео і продовжити гру </button>
 		<button *ngIf='!correct' class="new-game" (click)="dismiss('newGame')">Нова гра</button>
+		<div class='home-page-link' *ngIf="!correct">
+			<span (click)="dismiss('goHome')">
+				<ion-icon name="arrow-round-back"></ion-icon> 
+				<span class="txt">вернутися на головну</span>
+			</span>
+		</div>
 	</div>
 </div>
