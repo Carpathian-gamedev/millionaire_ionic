@@ -21,7 +21,7 @@
 		</button>
 		<button *ngIf='correct && level.price !== 1000000' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
 		<button *ngIf='correct && level.price === 1000000' class="go-forward" (click)="dismiss('goToMillion')">Похваліт ня</button>
-		<button *ngIf='!correct' class="call-to-watch-video">Поникати відео і продовжити гру </button>
+		<button *ngIf='!correct' class="call-to-watch-video" (click)="dismiss('watchVideoToContinue')">Поникати відео і продовжити гру </button>
 		<button *ngIf='!correct' class="new-game" (click)="dismiss('newGame')">Нова гра</button>
 		<div class='home-page-link' *ngIf="!correct">
 			<span (click)="dismiss('goHome')">

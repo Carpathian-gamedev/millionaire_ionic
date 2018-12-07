@@ -35,7 +35,7 @@ export class ScenePage {
 		this.setSceneData(this.navParams.data.sceneInfo);
 	}
 
-	setSceneData(data) {
+	setSceneData(data, videoWatched, excludedQuestionIndex) {
 		let index = this["levelsCounter"],
 			options;
 
@@ -139,7 +139,6 @@ export class ScenePage {
 
 		this.sharedService.setState('peoplesHelp', true);
 		this["states"]['peoplesHelp'] = true;
-
 		this.callPeoplesHelpModal();
 	}
 
@@ -170,6 +169,8 @@ export class ScenePage {
 				this.navCtrl.push(HomePage, {}, {animate: false});
 			} else if (data.action === 'goToMillion') {
 				this.navCtrl.push(MillionPage, {}, {animate: false});
+			} else if (data.action === 'watchVideoToContinue') {
+				this.setSceneData(this.navParams.data.sceneInfo);
 			} else if (data.action === 'newGame') {
 				this.http.get('assets/fake_json/story1.json')
 					.subscribe(response => {
