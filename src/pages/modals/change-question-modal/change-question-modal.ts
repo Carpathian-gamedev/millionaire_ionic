@@ -11,6 +11,6 @@ export class ChangeQuestionModal {
 	}
 
 	dismiss(action) {
-		this.viewCtrl.dismiss();
+		this.viewCtrl.dismiss({action: action});
 	}
 }

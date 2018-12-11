@@ -14,7 +14,8 @@ export class SharedService {
         this.states = {
             fiftyFifty: false,
             peoplesHelp: false,
-            friendsHelp: false
+            changeQuestion: false,
+            forgetWrongAnswer: false
         }
     }
 
@@ -27,7 +28,7 @@ export class SharedService {
     }
 
     setState(state, value) {
-
+        this["states"][state] = value;
     }
 
     getLetters() {

@@ -32,16 +32,17 @@ export class ScenePage {
 		this["states"] = this.sharedService.getStates();
 		this["letters"] = sharedService.getLetters();
 
-		this.setSceneData(this.navParams.data.sceneInfo);
+		this.setSceneData(this.navParams.data.sceneInfo, '');
 	}
 
-	setSceneData(data, videoWatched, excludedQuestionIndex) {
+	setSceneData(data, excludedQuestionIndex) {
 		let index = this["levelsCounter"],
 			options;
 
 		this["options"] = [];
 		this["level"] = data["levels"][index];
-		this["question"] = this["level"]["questions"][0];
+		this["questionIndex"] = this.generateRandomIndex(this["level"]["questions"], excludedQuestionIndex);
+		this["question"] = this["level"]["questions"][this["questionIndex"]];
 
 		options = this["question"]["options"];
 
@@ -96,6 +97,30 @@ export class ScenePage {
 		}, this.callModalTime)
 	}
 
+	generateRandomIndex(items, except) {
+		let indexFound = false,
+			length = items.length,
+			rand;
+
+		while (!indexFound) {
+			rand = Math.floor(Math.random() * length - 0.001);
+			
+			if (length > 1) {
+				if ((typeof except === 'number' && rand != except) || !except) {
+					indexFound = true;
+				}
+			} else {
+				indexFound = true;
+			}
+
+			if (rand < 0 || rand >= length) {
+				indexFound = false;
+			} 
+		}
+
+		return rand;
+	}
+
 	fiftyFifty() {
 		var indexes = [],
 			randIndex;
@@ -121,14 +146,13 @@ export class ScenePage {
 		}
 	}
 
-	friendsHelp() {
-		if (this.sharedService.getState('friendsHelp')) {
+	changeQuestion() {
+		if (this.sharedService.getState('changeQuestion')) {
 			return;
 		}
 
-		this.sharedService.setState('friendsHelp', true);
-		this["states"]['friendsHelp'] = true;
-
+		this.sharedService.setState('changeQuestion', true);
+		this["states"]['changeQuestion'] = true;
 		this.callChangeQuestionModal();
 	}
 
@@ -146,6 +170,11 @@ export class ScenePage {
 		let changeQuestionModal = this.modalCtrl.create(ChangeQuestionModal, {level: this.level || {}, options: this["options"]});
 		
 		changeQuestionModal.present();
+		changeQuestionModal.onDidDismiss(data => {
+			if (data.action === 'watchVideoToChangeQuestion') {
+				this.setSceneData(this.navParams.data.sceneInfo, this["questionIndex"]);
+			}
+		});
 	}
 
 	callPeoplesHelpModal() {
@@ -158,11 +187,10 @@ export class ScenePage {
 		let profileModal = this.modalCtrl.create(SceneModal, {level: this.level || {}, correct: option.correct});
 
 		profileModal.present();
-
 		profileModal.onDidDismiss(data => {
 			if (data.action === 'goForward') {
 				this["levelsCounter"]++;
-				this.setSceneData(this.navParams.data.sceneInfo);
+				this.setSceneData(this.navParams.data.sceneInfo, '');
 			} else if (data.action === 'takePrize') {
 				this.navCtrl.push(MyRecordsPage, {lastPage: 'ScenePage'}, {animate: false});
 			} else if (data.action === 'goHome') {
@@ -170,7 +198,9 @@ export class ScenePage {
 			} else if (data.action === 'goToMillion') {
 				this.navCtrl.push(MillionPage, {}, {animate: false});
 			} else if (data.action === 'watchVideoToContinue') {
-				this.setSceneData(this.navParams.data.sceneInfo);
+				this.sharedService.setState('forgetWrongAnswer', true);
+				this["states"]['forgetWrongAnswer'] = true;
+				this.setSceneData(this.navParams.data.sceneInfo, '');
 			} else if (data.action === 'newGame') {
 				this.http.get('assets/fake_json/story1.json')
 					.subscribe(response => {

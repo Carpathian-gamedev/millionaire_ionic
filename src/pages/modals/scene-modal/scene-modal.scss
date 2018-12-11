@@ -17,6 +17,9 @@ scene-modal {
 			line-height: calc(100% - 120px);
 			padding-top: 45px;
 			text-align: center;
+			&.no-bottom-padding {
+				height: calc(100% - 120px) !important;
+			}
 			.title {
 				padding-bottom: 15px;
 				height: 30px;
@@ -41,7 +44,8 @@ scene-modal {
 				padding: 0 10px;
 				height: 60px;
 				font-size: 17px;
-				&.take-prize {
+				&.take-prize,
+				&.go-home {
 					float: left;
 				}
 				&.go-forward,
@@ -54,6 +58,7 @@ scene-modal {
 			}
 			.home-page-link {
 				height: 50px;
+				clear: both;
 				line-height: 64px;
 				text-align: center;
 				[name="arrow-round-back"] {

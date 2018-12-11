@@ -3,13 +3,13 @@
 		<span *ngIf='correct'>Правильна&nbsp;відповідь</span>
 		<span *ngIf='!correct'>Неправильна&nbsp;відповідь</span>
 	</div>
-	<div class="modal-content" [ngClass]='{"correct": correct}'>
+	<div class="modal-content" [ngClass]='{"correct": correct, "no-bottom-padding": !correct && states.forgetWrongAnswer}'>
 		<div class="title">Ваш виграш</div>
 		<div class="points">
 			<span *ngIf='correct'>{{prize | numberFormatter}}</span>
 			<span *ngIf='!correct'>0</span>
 		</div>
-		<div class="points-description" [hidden]="correct">
+		<div class="points-description" [hidden]="correct || states.forgetWrongAnswer">
 			Ви відповіли неправильно, айбо можете
 			<b>Поникати відео і продовжити гру</b>
 			з цього місця де ви зараз
@@ -21,9 +21,10 @@
 		</button>
 		<button *ngIf='correct && level.price !== 1000000' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
 		<button *ngIf='correct && level.price === 1000000' class="go-forward" (click)="dismiss('goToMillion')">Похваліт ня</button>
-		<button *ngIf='!correct' class="call-to-watch-video" (click)="dismiss('watchVideoToContinue')">Поникати відео і продовжити гру </button>
+		<button *ngIf='!correct && !states.forgetWrongAnswer' class="call-to-watch-video" (click)="dismiss('watchVideoToContinue')">Поникати відео і продовжити гру </button>
+		<button *ngIf='!correct && states.forgetWrongAnswer' class="go-home" (click)="dismiss('goHome')">На головну</button>
 		<button *ngIf='!correct' class="new-game" (click)="dismiss('newGame')">Нова гра</button>
-		<div class='home-page-link' *ngIf="!correct">
+		<div class='home-page-link' *ngIf="!correct && !states.forgetWrongAnswer">
 			<span (click)="dismiss('goHome')">
 				<ion-icon name="arrow-round-back"></ion-icon> 
 				<span class="txt">вернутися на головну</span>
