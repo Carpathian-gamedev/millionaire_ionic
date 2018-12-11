@@ -85,6 +85,8 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.2.1" />
     <plugin name="cordova-plugin-advanced-http" spec="^2.0.1" />
     <plugin name="cordova-sqlite-storage" spec="2.5.2" />
+    <plugin name="cordova-plugin-admob-free" spec="^0.24.0">
+        <variable name="ADMOB_APP_ID" value="ca-app-pub-7084542198195077~7738738115" />
+    </plugin>
     <engine name="android" spec="7.0.0" />
-    <plugin name="cordova-plugin-admob-free" spec="0.24.0" />
 </widget>
