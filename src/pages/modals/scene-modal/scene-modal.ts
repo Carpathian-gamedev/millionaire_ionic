@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { SharedService } from '../../../helpers/scripts/shared-service';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 @Component({
 	selector: 'scene-modal',
 	templateUrl: 'scene-modal.html'
 })
 export class SceneModal {
-	constructor(public viewCtrl: ViewController, public params: NavParams, private storage: Storage, public sharedService: SharedService,) {
+	constructor(public viewCtrl: ViewController, public params: NavParams, private storage: Storage, public sharedService: SharedService, public admobFree: AdMobFree) {
 		this["level"] = this.params.data.level;
 		this["prize"] = this.params.data.level.price;
 		this["correct"] = this.params.data.correct;
@@ -25,6 +26,22 @@ export class SceneModal {
 				this.storage.set('records', JSON.stringify(records));
 				this.viewCtrl.dismiss({action: action});
 			});
+		} else if (action === 'watchVideoToContinue') {
+			const bannerConfig: AdMobFreeBannerConfig = {
+				// add your config here
+				// for the sake of this example we will just use the test config
+				isTesting: true,
+				autoShow: true
+			};
+			
+			this.admobFree.banner.config(bannerConfig);
+			this.admobFree.banner.prepare()
+			  .then(() => {
+			    // banner Ad is ready
+			    // if we set autoShow to false, then we will need to call the show method here
+			  })
+			  .catch(e => console.log(e));
+			// this.viewCtrl.dismiss({action: action});
 		} else {
 			this.viewCtrl.dismiss({action: action});
 		}

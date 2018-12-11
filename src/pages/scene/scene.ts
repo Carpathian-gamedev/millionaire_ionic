@@ -10,6 +10,7 @@ import { ChangeQuestionModal } from '../modals/change-question-modal/change-ques
 import { PeoplesHelpModal } from '../modals/peoples-help-modal/peoples-help-modal';
 import { InfoModal } from '../modals/info-modal/info-modal';
 import { SharedService } from '../../helpers/scripts/shared-service';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 @Component({
 	selector: 'scene',
@@ -22,7 +23,7 @@ export class ScenePage {
 	public blinks = 5;
 	public callModalTime = this.optionSelectionTimeout + this.blinks * this.animationTimeout + 1100;
 
-	constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public sharedService: SharedService, private storage: Storage) {
+	constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public modalCtrl: ModalController, public sharedService: SharedService, private storage: Storage, public admobFree: AdMobFree) {
 		if (this.navParams.data.lastPage !== 'HomePage') {
 			this.navCtrl.remove(this.navCtrl.last().index);
 		}
@@ -104,7 +105,7 @@ export class ScenePage {
 
 		while (!indexFound) {
 			rand = Math.floor(Math.random() * length - 0.001);
-			
+
 			if (length > 1) {
 				if ((typeof except === 'number' && rand != except) || !except) {
 					indexFound = true;
@@ -172,6 +173,7 @@ export class ScenePage {
 		changeQuestionModal.present();
 		changeQuestionModal.onDidDismiss(data => {
 			if (data.action === 'watchVideoToChangeQuestion') {
+				this.showsAds('video');
 				this.setSceneData(this.navParams.data.sceneInfo, this["questionIndex"]);
 			}
 		});
@@ -221,7 +223,24 @@ export class ScenePage {
 		infoModal.present();
 	}
 
-	writeVictory () {
+	showsAds() {
+		const bannerConfig: AdMobFreeBannerConfig = {
+			// add your config here
+			// for the sake of this example we will just use the test config
+			isTesting: true,
+			autoShow: true
+		};
+
+		this.admobFree.banner.config(bannerConfig);
+		this.admobFree.banner.prepare()
+			.then(() => {
+				// banner Ad is ready
+				// if we set autoShow to false, then we will need to call the show method here
+			})
+			.catch(e => console.log(e));
+	}
+
+	writeVictory() {
 		this.storage.get('records').then((val) => {
 			let records = val ? JSON.parse(val) : [];
 
