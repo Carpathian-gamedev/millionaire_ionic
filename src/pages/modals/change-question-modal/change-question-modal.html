@@ -6,6 +6,7 @@
 		Поникайте коротку рекламу, оби змінити питання
 	</div>
 	<div class="modal-actions">
-		<button class="go-forward" (click)="dismiss('watchVideoToChangeQuestion')">Продовжити</button>
+		<button class="go-forward" [hidden]="videoStartedLoading" (click)="dismiss('watchVideoToChangeQuestion')">Продовжити</button>
+		<p text-right [hidden]="!videoStartedLoading">Почекайте мало, грузимо відео</p>
 	</div>
 </div>

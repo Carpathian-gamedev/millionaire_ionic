@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { SharedService } from '../../../helpers/scripts/shared-service';
-import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+import { AdMobFree, AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free';
 
 @Component({
 	selector: 'scene-modal',
@@ -27,20 +27,20 @@ export class SceneModal {
 				this.viewCtrl.dismiss({action: action});
 			});
 		} else if (action === 'watchVideoToContinue') {
-			const bannerConfig: AdMobFreeBannerConfig = {
+			const bannerConfig: AdMobFreeRewardVideoConfig = {
 				// add your config here
 				// for the sake of this example we will just use the test config
 				isTesting: true,
 				autoShow: true
 			};
 			
-			this.admobFree.banner.config(bannerConfig);
-			this.admobFree.banner.prepare()
+			this.admobFree.rewardVideo.config(bannerConfig);
+			this.admobFree.rewardVideo.prepare()
 			  .then(() => {
 			    // banner Ad is ready
 			    // if we set autoShow to false, then we will need to call the show method here
 			  })
-			  .catch(e => console.log(e));
+			  .catch(e => alert(e));
 			// this.viewCtrl.dismiss({action: action});
 		} else {
 			this.viewCtrl.dismiss({action: action});
