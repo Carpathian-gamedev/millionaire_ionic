@@ -6,7 +6,11 @@ export class SharedService {
 
     constructor() {
         this["states"] = {};
-        this["admobListeners"] = {};
+        this["admob"] = {
+            rewardVideoCB: function () {
+                alert('defaultCB');
+            }
+        };
         this["letters"] = ['A', 'B', 'C', 'D'];
         this.resetStates();
     }
