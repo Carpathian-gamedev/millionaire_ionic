@@ -12,9 +12,15 @@ import { SharedService } from '../../helpers/scripts/shared-service';
 })
 
 export class HomePage {
-	constructor(public navCtrl: NavController, public http: Http, public sharedService: SharedService) {}
+	constructor(public navCtrl: NavController, public http: Http, public sharedService: SharedService) {
+
+	}
 
 	ionViewWillEnter() {
+		document.removeEventListener('admob.rewardvideo.events.REWARD', () => {});
+		document.removeEventListener('admob.rewardvideo.events.CLOSE', () => {});
+		document.removeEventListener('admob.rewardvideo.events.LOAD_FAIL', () => {});
+
 		this.http.get('assets/fake_json/story1.json')
 		  	.subscribe(response => {
 				let data = JSON.parse(response["_body"]);

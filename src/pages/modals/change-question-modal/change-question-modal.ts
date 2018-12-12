@@ -1,33 +1,41 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { AdMobFree, AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free';
+import { SharedService } from '../../../helpers/scripts/shared-service';
 
 @Component({
 	selector: 'change-question-modal',
 	templateUrl: 'change-question-modal.html'
 })
 export class ChangeQuestionModal {
-	constructor(public viewCtrl: ViewController, public params: NavParams, public admobFree: AdMobFree) {
-	    document.removeEventListener('admob.rewardvideo.events.REWARD', () => {});
-	    document.addEventListener('admob.rewardvideo.events.REWARD', () => {
-	    	this["userRewarded"] = true;
-	    	this.viewCtrl.dismiss({action: this["action"]});
-	      	alert("GIVE USER A REWARD HERE");
-	    });
+	constructor(public viewCtrl: ViewController, public params: NavParams, public admobFree: AdMobFree, public sharedService: SharedService) {
+		console.info(this.sharedService["admobListeners"]);
 
-	    document.removeEventListener('admob.rewardvideo.events.CLOSE', () => {});
-	    document.addEventListener('admob.rewardvideo.events.CLOSE', () => {
-	      	if (!this["userRewarded"]) {
-	      		alert('USER CLOSED VIDEO');
-	      	}
-	    });
+		if (!this.sharedService["admobListeners"].rewardVideoListener) {
+			this.sharedService["admobListeners"].rewardVideoListener = true;
+			document.addEventListener('admob.rewardvideo.events.REWARD', () => {
+		    	this["userRewarded"] = true;
+		    	this.viewCtrl.dismiss({action: this["action"]});
+		      	alert("GIVE USER A REWARD HERE");
+		    });
+		}
+	    
+		if (!this.sharedService["admobListeners"].closeVideoListener) {
+			this.sharedService["admobListeners"].closeVideoListener = true;
+		    document.addEventListener('admob.rewardvideo.events.CLOSE', () => {
+		    	if (!this["userRewarded"]) {
+		      		alert('USER CLOSED VIDEO');
+		      	}
+		    });
+		}
 
-	    document.removeEventListener('admob.rewardvideo.events.LOAD_FAIL', () => {});
 	    document.addEventListener('admob.rewardvideo.events.LOAD_FAIL', () => {
+	    	this.viewCtrl.dismiss({action: ''});
 	      	alert('Failed to load VIDEO');
+
 	    });
 	}
-
+	
 	dismiss(action) {
 		this["videoStartedLoading"] = true;
 		this["action"] = action;

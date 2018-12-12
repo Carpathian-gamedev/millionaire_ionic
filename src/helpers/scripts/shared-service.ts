@@ -6,6 +6,7 @@ export class SharedService {
 
     constructor() {
         this["states"] = {};
+        this["admobListeners"] = {};
         this["letters"] = ['A', 'B', 'C', 'D'];
         this.resetStates();
     }
