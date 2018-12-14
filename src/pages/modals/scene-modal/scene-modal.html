@@ -16,17 +16,17 @@
 		</div>
 	</div>
 	<div class="modal-actions">
-		<button class="take-prize" (click)="dismiss('takePrize')" *ngIf="level.price !== 1000000 && correct">
+		<button class="take-prize secondary-button" (click)="dismiss('takePrize')" *ngIf="level.price !== 1000000 && correct">
 			<span *ngIf='correct'>Забрати очки</span>
 		</button>
-		<button *ngIf='correct && level.price !== 1000000' class="go-forward" (click)="dismiss('goForward')">Продовжити</button>
-		<button *ngIf='correct && level.price === 1000000' class="go-forward" (click)="dismiss('goToMillion')">Похваліт ня</button>
-		<button *ngIf='!correct && !states.forgetWrongAnswer && !videoStartedLoading' class="call-to-watch-video" (click)="dismiss('watchVideoToContinue')">Поникати відео і продовжити гру </button>
+		<button *ngIf='correct && level.price !== 1000000' class="go-forward primary-button" (click)="dismiss('goForward')">Продовжити</button>
+		<button *ngIf='correct && level.price === 1000000' class="go-forward primary-button" (click)="dismiss('goToMillion')">Похваліт ня</button>
+		<button *ngIf='!correct && !states.forgetWrongAnswer && !videoStartedLoading' class="call-to-watch-video primary-button" (click)="dismiss('watchVideoToContinue')">Поникати відео і продовжити гру </button>
 		<div class="video-loading-notification" *ngIf="videoStartedLoading">
 			Почекайте секунду, грузиться...
 		</div>
-		<button *ngIf='!correct && states.forgetWrongAnswer' class="go-home" (click)="dismiss('goHome')">На головну</button>
-		<button *ngIf='!correct' class="new-game" (click)="dismiss('newGame')">Нова гра</button>
+		<button *ngIf='!correct && states.forgetWrongAnswer' class="go-home secondary-button" (click)="dismiss('goHome')">На головну</button>
+		<button *ngIf='!correct' class="new-game secondary-button" (click)="dismiss('newGame')">Нова гра</button>
 		<div class='home-page-link' *ngIf="!correct && !states.forgetWrongAnswer">
 			<span (click)="dismiss('goHome')">
 				<ion-icon name="arrow-round-back"></ion-icon> 
