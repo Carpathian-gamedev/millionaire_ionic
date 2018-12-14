@@ -40,6 +40,7 @@ scene-modal {
 		}
 		.modal-actions {
 			button {
+				@extend %button-box-shadow;
 				width: calc(50% - 7px);
 				padding: 0 10px;
 				height: 60px;

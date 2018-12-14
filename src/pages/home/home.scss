@@ -6,6 +6,8 @@ home {
 		width: 100%;
 		button[round] {
 			@extend %custom-block-view;
+			color: white;
+			width: 143px;
 		}
 	}
 }

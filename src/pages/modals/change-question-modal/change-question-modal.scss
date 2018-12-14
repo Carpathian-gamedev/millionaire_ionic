@@ -24,6 +24,7 @@ change-question-modal {
 			display: table;
 			width: 100%;
 			button {
+				@extend %button-box-shadow;
 				width: calc(50% - 7px);
 				padding: 20px 0;
 				font-size: 20px;

@@ -1,7 +1,7 @@
 @import "../../../helpers/styles/mixins.scss";
 
 info-modal {
-	background-color: rgb(204, 204, 204);
+	background-color: white;
 	padding: 20% 15px;
 	.modal-body {
 		background-color: white;
@@ -24,7 +24,6 @@ info-modal {
 		    border: 1px solid #b0b0b0;
 		    &.active {
 		    	background: $btnCommonOrange;
-		    	// border: $btnCommonOrange;
 		    }
 		}
 		.vertical-line-imitator {
