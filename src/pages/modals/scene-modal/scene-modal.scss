@@ -1,7 +1,10 @@
+@import "../../../helpers/styles/mixins.scss";
+
 scene-modal {
 	background-color: rgba(143, 143, 143, 0.6);
 	padding: 10% 15px;
 	.modal-body {
+		@extend %custom-block-view;
 		background-color: white;
 		height: 100%;
 		padding: 15px;
@@ -41,25 +44,28 @@ scene-modal {
 		.modal-actions {
 			button {
 				@extend %button-box-shadow;
+				@extend %custom-block-view;
 				width: calc(50% - 7px);
 				padding: 0 10px;
 				height: 60px;
 				font-size: 17px;
 				&.take-prize,
-				&.go-home {
+				&.go-home,
+				&.new-game.secondary-button {
 					float: left;
 				}
 				&.go-forward,
-				&.new-game {
+				&.new-game.primary-button {
 					float: right;
 				}
 				&.call-to-watch-video {
 					font-size: 12px;
+					float: right;
 				}
 			}
 			.video-loading-notification {
-				float: left;
-			    width: 50%;
+				float: right;
+			    width: 48%;
 			    text-align: center;
 			    padding-top: 10px;
 			}

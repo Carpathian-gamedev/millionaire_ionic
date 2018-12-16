@@ -14,11 +14,13 @@
 }
 .primary-button {
 	background: $commonBgColor;
+	border: 1px solid $commonBgColor;
 	box-shadow: 8px 8px 5px -3px #ccc !important;
 	color: white;
 }
 .secondary-button {
-	background: #f3f3f3;
+	background: $secondaryBgColor;
+	border: 1px solid $secondaryBgColor;
 	color: black;
     box-shadow: 8px 8px 5px -3px #ccc !important;
 }

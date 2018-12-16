@@ -4,6 +4,7 @@ info-modal {
 	background-color: white;
 	padding: 20% 15px;
 	.modal-body {
+		@extend %custom-block-view;
 		background-color: white;
 		padding: 10px;
 		display: table;

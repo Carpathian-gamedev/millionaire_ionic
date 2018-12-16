@@ -1,7 +1,10 @@
+@import "../../../helpers/styles/mixins.scss";
+
 peoples-help-modal {
 	background-color: rgba(143, 143, 143, 0.6);
 	padding: 20% 15px;
 	.modal-body {
+		@extend %custom-block-view;
 		background-color: white;
 		padding: 15px;
 		.modal-header {
@@ -48,9 +51,8 @@ peoples-help-modal {
 			display: table;
 			width: 100%;
 			button {
-				@extend %button-box-shadow;
-				width: calc(50% - 7px);
-				padding: 20px 0;
+				@extend %custom-block-view;
+				padding: 20px;
 				font-size: 20px;
 				&.go-forward {
 					float: right;

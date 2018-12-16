@@ -1,3 +1,5 @@
+@import "../../../helpers/styles/mixins.scss";
+
 change-question-modal {
 	background-color: rgba(143, 143, 143, 0.6);
 	padding: 20% 15px;
@@ -24,9 +26,8 @@ change-question-modal {
 			display: table;
 			width: 100%;
 			button {
-				@extend %button-box-shadow;
-				width: calc(50% - 7px);
-				padding: 20px 0;
+				@extend %custom-block-view;
+				padding: 20px;
 				font-size: 20px;
 				&.go-forward {
 					float: right;
