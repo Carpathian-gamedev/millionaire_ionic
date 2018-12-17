@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController, NavParams } from 'ionic-angular';
+import { SharedService } from '../../helpers/scripts/shared-service';
 
 @Component({
   selector: 'my-records',
   templateUrl: 'my-records.html'
 })
 export class MyRecordsPage {
-  	constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+  	constructor(public navCtrl: NavController, public sharedService: SharedService, public navParams: NavParams, public storage: Storage) {
 	  	if (this.navParams.data.lastPage === 'ScenePage') {
 	  		this.navCtrl.remove(this.navCtrl.last().index);
 	  	}
@@ -21,6 +22,8 @@ export class MyRecordsPage {
 
 			this["records"] = records;
 		});
+
+		this.setBackBtnAction();
 	}
 
 	formatDate (timestamp) {
@@ -41,4 +44,12 @@ export class MyRecordsPage {
 
         return arg;
     }
+
+    goBack() {
+		this.navCtrl.pop();
+	}
+
+	setBackBtnAction() {
+		this["sharedService"].backButtonAction = this.goBack.bind(this);
+	}
 }

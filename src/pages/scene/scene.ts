@@ -33,6 +33,7 @@ export class ScenePage {
 		this["letters"] = sharedService.getLetters();
 
 		this.setSceneData(this.navParams.data.sceneInfo, '');
+		this.setBackBtnAction();
 	}
 
 	setSceneData(data, excludedQuestionIndex) {
@@ -173,6 +174,7 @@ export class ScenePage {
 		changeQuestionModal.onDidDismiss(data => {
 			if (data.action === 'watchVideoToChangeQuestion') {
 				this.setSceneData(this.navParams.data.sceneInfo, this["questionIndex"]);
+				this.setBackBtnAction();
 			}
 		});
 	}
@@ -181,6 +183,9 @@ export class ScenePage {
 		let peoplesHelpModal = this.modalCtrl.create(PeoplesHelpModal, {level: this.level || {}, question: this["question"], options: this["options"]});
 		
 		peoplesHelpModal.present();
+		peoplesHelpModal.onDidDismiss(() => {
+			this.setBackBtnAction();
+		});
 	}
 
 	callSelectionModal(option) {
@@ -191,6 +196,7 @@ export class ScenePage {
 			if (data.action === 'goForward') {
 				this["levelsCounter"]++;
 				this.setSceneData(this.navParams.data.sceneInfo, '');
+				this.setBackBtnAction();
 			} else if (data.action === 'takePrize') {
 				this.navCtrl.push(MyRecordsPage, {lastPage: 'ScenePage'}, {animate: false});
 			} else if (data.action === 'goHome') {
@@ -201,6 +207,7 @@ export class ScenePage {
 				this.sharedService.setState('forgetWrongAnswer', true);
 				this["states"]['forgetWrongAnswer'] = true;
 				this.setSceneData(this.navParams.data.sceneInfo, '');
+				this.setBackBtnAction();
 			} else if (data.action === 'newGame') {
 				this.http.get('assets/fake_json/story1.json')
 					.subscribe(response => {
@@ -219,6 +226,9 @@ export class ScenePage {
 		let infoModal = this.modalCtrl.create(InfoModal, {levels: this.navParams.data.sceneInfo["levels"], level: this["level"]});
 
 		infoModal.present();
+		infoModal.onDidDismiss(() => {
+			this.setBackBtnAction();
+		});
 	}
 
 	writeVictory() {
@@ -242,5 +252,13 @@ export class ScenePage {
 
 			this.startAnimation(option, counter);
 		}, this.animationTimeout);
+	}
+
+	goBack() {
+		this.navCtrl.pop();
+	}
+
+	setBackBtnAction() {
+		this["sharedService"].backButtonAction = this.goBack.bind(this);
 	}
 }

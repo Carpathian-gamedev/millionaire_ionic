@@ -13,13 +13,11 @@ import { SharedService } from '../../helpers/scripts/shared-service';
 
 export class HomePage {
 	constructor(public navCtrl: NavController, public http: Http, public sharedService: SharedService) {
-
+		this.setBackBtnAction();
 	}
 
 	ionViewWillEnter() {
-		document.removeEventListener('admob.rewardvideo.events.REWARD', () => {});
-		document.removeEventListener('admob.rewardvideo.events.CLOSE', () => {});
-		document.removeEventListener('admob.rewardvideo.events.LOAD_FAIL', () => {});
+		this.setBackBtnAction();
 
 		this.http.get('assets/fake_json/story1.json')
 		  	.subscribe(response => {
@@ -40,5 +38,9 @@ export class HomePage {
 		} else if (page === 'myRecords') {
 			this.navCtrl.push(MyRecordsPage);
 		}
+	}
+
+	setBackBtnAction() {
+		this["sharedService"].backButtonAction = function () {};
 	}
 }

@@ -9,6 +9,7 @@ import { SharedService } from '../../../helpers/scripts/shared-service';
 })
 export class ChangeQuestionModal {
 	constructor(public viewCtrl: ViewController, public params: NavParams, public admobFree: AdMobFree, public sharedService: SharedService) {
+		this.setBackBtnAction();
 		// if (!this.sharedService["admobListeners"].rewardVideoListener) {
 		// 	this.sharedService["admobListeners"].rewardVideoListener = true;
 		// 	document.addEventListener('admob.rewardvideo.events.REWARD', () => {
@@ -39,6 +40,10 @@ export class ChangeQuestionModal {
 		this["action"] = action;
 		this.viewCtrl.dismiss({action: this["action"]});
 		// this.showAds(action);
+	}
+
+	setBackBtnAction() {
+		this["sharedService"].backButtonAction = function () {};
 	}
 
 	// showAds(action) {

@@ -30,6 +30,8 @@ export class SceneModal {
 	 //    	this.viewCtrl.dismiss({action: ''});
 	 //      	alert('Failed to load VIDEO');
 	 //    });
+
+		this.setBackBtnAction();
 	}
 
 	rewardVideoListener() {
@@ -84,5 +86,9 @@ export class SceneModal {
 				// this.setSceneData(this.navParams.data.sceneInfo, this["questionIndex"]);
 			})
 			.catch(e => alert(e));
+	}
+
+	setBackBtnAction() {
+		this["sharedService"].backButtonAction = function () {};
 	}
 }

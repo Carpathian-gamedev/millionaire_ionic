@@ -11,9 +11,15 @@ export class InfoModal {
 		this["levels"] = this.params.data.levels.slice();
 		this["levels"].reverse();
 		this["level"] = this.params.data.level;
+
+		this.setBackBtnAction();
 	}
 
 	dismiss(action) {
 		this.viewCtrl.dismiss();
+	}
+
+	setBackBtnAction() {
+		this["sharedService"].backButtonAction = function () {};
 	}
 }

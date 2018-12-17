@@ -39,4 +39,8 @@ export class SharedService {
     getLetters() {
         return this["letters"];
     }
+
+    backButtonAction() {
+        
+    }
 }

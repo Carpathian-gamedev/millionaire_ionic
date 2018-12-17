@@ -4,6 +4,7 @@ change-question-modal {
 	background-color: rgba(143, 143, 143, 0.6);
 	padding: 20% 15px;
 	.modal-body {
+		@extend %custom-block-view;
 		background-color: white;
 		padding: 15px;
 		.modal-header {

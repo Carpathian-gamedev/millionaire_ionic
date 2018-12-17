@@ -18,7 +18,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      	document.addEventListener('admob.rewardvideo.events.REWARD', () => {
+      document.addEventListener('admob.rewardvideo.events.REWARD', () => {
           this["sharedService"]["admob"].rewardVideoCB();
         });
 	
@@ -29,6 +29,14 @@ export class MyApp {
 	    document.addEventListener('admob.rewardvideo.events.LOAD_FAIL', () => {
 	    	
 	    });
+
+      document.addEventListener('oleg', () => {
+        this["sharedService"].backButtonAction();
+      })
+    });
+
+    platform.registerBackButtonAction(() => {
+      this["sharedService"].backButtonAction();
     });
   }
 }

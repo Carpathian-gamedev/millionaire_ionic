@@ -12,7 +12,8 @@ export class PeoplesHelpModal {
 		this["options"] = this.params.data.options.slice();
 		this["letters"] = sharedService.getLetters();
 
-		this.setChances();		
+		this.setChances();
+		this.setBackBtnAction();
 	}
 
 	setChances() {
@@ -96,5 +97,9 @@ export class PeoplesHelpModal {
 
 	dismiss(action) {
 		this.viewCtrl.dismiss();
+	}
+
+	setBackBtnAction() {
+		this["sharedService"].backButtonAction = function () {};
 	}
 }
