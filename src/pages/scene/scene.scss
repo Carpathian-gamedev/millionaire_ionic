@@ -8,7 +8,7 @@ scene {
 			.help-btn {
 			width: 50px;
 		    height: 50px;
-		    border: 1px solid black;
+		    border: 1px solid grey;
 		    border-radius: 50%;
 		    text-align: center;
 		    background: #f3f3f3;
@@ -66,21 +66,24 @@ scene {
 	    text-align: center;
 	    max-width: 100%;
 	    height: 200px;
-	    background-position: center center;
-	    background-size: cover;
-	    background-repeat: no-repeat;
 	}
 	.question-wrapper {
 		display: table;
 		width: 100%;
-		height: 194px;
+		height: 190px;
 		background: white;
 		text-align: center;
 		position: relative;
-		background: $commonBgColor;
+		margin-top: 10px;
+		border: 2px solid $commonBgColor;
 		border-radius: $btnCommonBorderRadius;
 		box-shadow: 8px 8px 5px -3px #ccc;
+		background-position: center center;
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    background-image: url('../assets/imgs/grid_diagonal.png');
 		.question-title-wrapper {
+			margin-top: -10px;
 			.question-title {
 				text-align: center;
 			    background: white;
@@ -95,8 +98,8 @@ scene {
 		.question-text {
     		font-size: 20px;
     		font-weight: bold;
-    		padding-top: 57px;
-    		color: white;
+    		padding: 57px 15px 0 15px;
+    		color: $secondaryTextColor;
 		}
 	}
 	ion-footer {
@@ -110,7 +113,7 @@ scene {
 		    font-size: 16px;
 		    text-align: left;
 		    padding: 20px 15px;
-		    color: black;
+		    color: $secondaryTextColor;
 		    margin-top: 10px;
 		    &.clicked {
 		    	background-color: rgb(211, 211, 211);

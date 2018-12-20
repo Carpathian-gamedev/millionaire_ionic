@@ -21,6 +21,6 @@
 .secondary-button {
 	background: $secondaryBgColor;
 	border: 1px solid $secondaryBgColor;
-	color: black;
+	color: $secondaryTextColor;
     box-shadow: 8px 8px 5px -3px #ccc !important;
 }
