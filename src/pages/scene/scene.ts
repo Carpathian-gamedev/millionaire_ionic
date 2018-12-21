@@ -172,10 +172,9 @@ export class ScenePage {
 		
 		changeQuestionModal.present();
 		changeQuestionModal.onDidDismiss(data => {
-			if (data.action === 'watchVideoToChangeQuestion') {
-				this.setSceneData(this.navParams.data.sceneInfo, this["questionIndex"]);
-				this.setBackBtnAction();
-			}
+			this.setSceneData(this.navParams.data.sceneInfo, this["questionIndex"]);
+			this.setBackBtnAction();
+			this["sharedService"].showIntersitialAds();
 		});
 	}
 
@@ -199,10 +198,12 @@ export class ScenePage {
 				this.setBackBtnAction();
 			} else if (data.action === 'takePrize') {
 				this.navCtrl.push(MyRecordsPage, {lastPage: 'ScenePage'}, {animate: false});
+				this["sharedService"].showIntersitialAds();
 			} else if (data.action === 'goHome') {
 				this.navCtrl.push(HomePage, {}, {animate: false});
 			} else if (data.action === 'goToMillion') {
 				this.navCtrl.push(MillionPage, {}, {animate: false});
+				this["sharedService"].showIntersitialAds();
 			} else if (data.action === 'watchVideoToContinue') {
 				this.sharedService.setState('forgetWrongAnswer', true);
 				this["states"]['forgetWrongAnswer'] = true;

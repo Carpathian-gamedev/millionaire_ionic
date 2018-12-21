@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { AdMobFree, AdMobFreeRewardVideoConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 
 @Injectable()
 export class SharedService {
     public states;
 
-    constructor() {
+    constructor(public admobFree: AdMobFree) {
         this["states"] = {};
         this["admob"] = {
             rewardVideoCB: function () {
@@ -12,6 +13,7 @@ export class SharedService {
             }
         };
         this["letters"] = ['A', 'B', 'C', 'D'];
+        this["intersitialCounter"] = 0;
         this.resetStates();
     }
 
@@ -38,6 +40,49 @@ export class SharedService {
 
     getLetters() {
         return this["letters"];
+    }
+
+    showVideoAds() {
+        const videoConfig: AdMobFreeRewardVideoConfig = {
+            // add your config here
+            // for the sake of this example we will just use the test config
+            // id: 'ca-app-pub-7084542198195077/5255813497',
+            isTesting: true,
+            autoShow: true
+        };
+
+        this.admobFree.rewardVideo.config(videoConfig);
+        this.admobFree.rewardVideo.prepare()
+            .then((response) => {
+                // alert(response);
+                // alert(JSON.stringify(response));
+                // banner Ad is ready
+                // if we set autoShow to false, then we will need to call the show method here
+                // this.setSceneData(this.navParams.data.sceneInfo, this["questionIndex"]);
+            })
+            .catch((e) => {
+                this["admob"].closeVideoCB();
+                alert('Перевірте підключення до інтернету');
+            });
+    }
+
+    showIntersitialAds() {
+        if (this["intersitialCounter"] % 2 === 0) {
+            const bannerConfig: AdMobFreeInterstitialConfig = {
+                // add your config here
+                // for the sake of this example we will just use the test config
+                isTesting: true,
+                autoShow: true
+            };
+            this.admobFree.interstitial.config(bannerConfig);
+            this.admobFree.interstitial.prepare()
+                .then(() => {})
+                .catch((e) => {
+                    console.info(e)
+                })
+        }
+
+        this["intersitialCounter"]++;
     }
 
     backButtonAction() {
