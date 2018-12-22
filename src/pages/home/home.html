@@ -5,7 +5,11 @@
     </ion-title>
   </ion-navbar>
 </ion-header> -->
-
+<ion-header>
+  <div class="img-title" text-center>
+    <img src="assets/imgs/zm_title.png">
+  </div>
+</ion-header>
 <ion-content padding class="vertical-align-content">
   <div class="menu-list">
     <p>
@@ -17,5 +21,17 @@
     <p>
       <button class="secondary-button" ion-button round large (click)="moveTo('myRecords')">Рекорди</button>
     </p>
+    <p>
+      <button class="secondary-button" ion-button round large (click)="exit()">Вихід</button>
+    </p>
+    <div class="social-block" text-center>
+      <div>поникайте на нас</div>
+      <a href="https://vk.com/ajno_ajno"><img src="assets/imgs/vk.png" height="50"></a>
+      <a href="https://instagram.com/ajno_ajno"><img src="assets/imgs/instagram.png" height="47"></a>
+    </div>
   </div>
 </ion-content>
+<!-- <ion-footer>
+    
+</ion-footer>
+ -->

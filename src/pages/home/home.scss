@@ -1,12 +1,30 @@
 @import "../../helpers/styles/mixins.scss";
 
 home {
+	ion-header {
+		&::before,
+		&::after {
+			background-image: none !important;
+		};
+	}
+	.img-title {
+		margin-top: 20px;
+		img {
+			width: 260px;
+		}
+	}
 	.menu-list {
 		text-align: center;
 		width: 100%;
 		button[round] {
 			@extend %custom-block-view;
-			width: 143px;
+			width: 160px;
+		}
+	}
+	.social-block {
+		margin-top: 30px;
+		img {
+			margin: 5px;
 		}
 	}
 }

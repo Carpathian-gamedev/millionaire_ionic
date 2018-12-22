@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { AboutUsPage } from '../about-us/about-us';
 import { MyRecordsPage } from '../my-records/my-records';
 import { ScenePage } from '../scene/scene';
@@ -12,7 +12,7 @@ import { SharedService } from '../../helpers/scripts/shared-service';
 })
 
 export class HomePage {
-	constructor(public navCtrl: NavController, public http: Http, public sharedService: SharedService) {
+	constructor(public platform: Platform, public navCtrl: NavController, public http: Http, public sharedService: SharedService) {
 		this.setBackBtnAction();
 	}
 
@@ -43,4 +43,8 @@ export class HomePage {
 	setBackBtnAction() {
 		this["sharedService"].backButtonAction = function () {};
 	}
+
+	exit() {
+     	this["platform"].exitApp();
+  	}
 }

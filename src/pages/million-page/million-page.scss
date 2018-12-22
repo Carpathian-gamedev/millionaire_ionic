@@ -1,4 +1,25 @@
+@import "../../helpers/styles/mixins.scss";
+
 million-page {
 	background: white;
 	padding: 15px;
+	.congrats {
+		padding-top: 30px;
+		font-size: 30px;
+	}
+	.btn-holder {
+    	margin-bottom: 5px;
+		button {
+			@extend %custom-block-view;
+			width: 168px;
+			text-align: center;
+			margin-top: 20px;
+		}
+	}
+	.social-block {
+		font-size: 20px;
+		img {
+			margin: 5px;
+		}
+	}
 }
