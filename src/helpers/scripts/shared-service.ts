@@ -46,8 +46,8 @@ export class SharedService {
         const videoConfig: AdMobFreeRewardVideoConfig = {
             // add your config here
             // for the sake of this example we will just use the test config
-            isTesting: true,
-            // id: 'ca-app-pub-7084542198195077/5255813497',
+            // isTesting: true,
+            id: 'ca-app-pub-7084542198195077/5255813497',
             autoShow: true
         };
 
@@ -71,8 +71,8 @@ export class SharedService {
             const intersitialConfig: AdMobFreeInterstitialConfig = {
                 // add your config here
                 // for the sake of this example we will just use the test config
-                isTesting: true,
-                // id: 'ca-app-pub-7084542198195077/7019487151',
+                // isTesting: true,
+                id: 'ca-app-pub-7084542198195077/7019487151',
                 autoShow: true
             };
             this.admobFree.interstitial.config(intersitialConfig);
