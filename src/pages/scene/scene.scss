@@ -39,7 +39,7 @@ scene {
 		    font-size: 34px;
 		    text-align: center;
 		    ion-icon {
-		    	margin-top: 4px;
+		    	margin-top: 5px;
 		    }
 		}
 		.people {
@@ -60,6 +60,10 @@ scene {
 		}
 		.fifty-fifty div:nth-child(1) {
 			border-bottom: 1px solid;
+			margin-top: 1px;
+		}
+		.check-stage-button {
+			padding-top: 1px;
 		}
 	}
 	.image-wrapper {
@@ -129,22 +133,6 @@ scene {
 		    &.disabled {
 		    	opacity: 0.2;
 		    }
-		}
-		.check-stage-button {
-			position: absolute;
-		    border-top-left-radius: 10px;
-		    border-bottom-left-radius: 10px;
-		    height: 72px;
-		    width: 72px;
-		    line-height: 72px;
-		    /* line-height: 32px; */
-		    /* background-color: red; */
-		    right: 0;
-		    top: -70px;
-		    text-align: center;
-		    font-size: 30px;
-		    border: 1px solid black;
-		    border-right: none;
 		}
 	}
 }

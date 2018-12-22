@@ -66,8 +66,8 @@ export class SharedService {
             });
     }
 
-    showIntersitialAds() {
-        if (this["intersitialCounter"] % 2 === 0) {
+    showIntersitialAds(forced) {
+        if ((this["intersitialCounter"] % 2 === 1) || forced) {
             const intersitialConfig: AdMobFreeInterstitialConfig = {
                 // add your config here
                 // for the sake of this example we will just use the test config

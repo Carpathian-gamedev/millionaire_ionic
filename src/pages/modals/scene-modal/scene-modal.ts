@@ -15,10 +15,6 @@ export class SceneModal {
 		this["states"] = this.sharedService.getStates() || {};
 		this["sharedService"]["admob"].rewardVideoCB = this.rewardVideoListener.bind(this);
 		this["sharedService"]["admob"].closeVideoCB = this.closeVideoListener.bind(this);
-
-		if (!this["correct"]) {
-			this["sharedService"].showIntersitialAds();
-		}
 		
 		this.setBackBtnAction();
 	}
